@@ -3,113 +3,99 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>信</title>
+<title>生日快乐！</title>
 
 <style>
 body {
   margin: 0;
-  overflow: hidden;
-  background: #ffffff;
+  background: #f5ecd9; /* 米色信纸 */
   font-family: "Noto Serif SC", serif;
 }
 
-/* 容器占满屏幕 */
-#container {
-  position: relative;
+/* 内容区域 */
+#content {
   width: 100vw;
   height: 100vh;
-  cursor: pointer;
-}
-
-/* 门 */
-.panel {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  background: #ffffff;
-  top: 0;
-  z-index: 2;
-  transition: transform 1.2s ease;
-}
-
-.left {
-  left: 0;
-  border-right: 1px solid #ddd;
-}
-
-.right {
-  right: 0;
-  border-left: 1px solid #ddd;
-}
-
-/* 打开动画 */
-.open .left {
-  transform: translateX(-100%);
-}
-
-.open .right {
-  transform: translateX(100%);
-}
-
-/* 信纸（全屏） */
-#content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #f5ecd9; /* 米色 */
-  color: #222;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-  
-  /* 关键：像真实信件的排版 */
-  padding: 40px 24px;
+  padding: 32px 20px;
   box-sizing: border-box;
-  line-height: 1.8;
-  font-size: 18px;
+
+  color: #222;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 
   display: flex;
-  align-items: flex-start;
   justify-content: center;
+
+  /* 初始隐藏 */
+  opacity: 0;
+  transform: translateY(10px);
+
+  /* 淡入动画 */
+  transition: opacity 1.5s ease, transform 1.5s ease;
 }
 
-/* 文字区域（限制宽度更像信） */
+/* 文字排版 */
 #text {
-  max-width: 600px;
+  max-width: 680px;
   width: 100%;
+  line-height: 1.9;
+  font-size: 18px;
+  word-break: break-word;
 }
 
-/* 打开后显示 */
-.open #content {
-  opacity: 1;
+#text p {
+  margin-bottom: 18px;
+}
+
+/* 落款 */
+.signature {
+  margin-top: 40px;
+  text-align: right;
 }
 </style>
 </head>
 
 <body>
 
-<div id="container" onclick="openIt()">
-  <div class="panel left"></div>
-  <div class="panel right"></div>
+<div id="content">
+  <div id="text">
 
-  <div id="content">
-    <div id="text">
-      这是一封铺满整个屏幕的信。<br><br>
-      你现在看到的，不是一个页面，<br>
-      而是被展开的一整张纸。<br><br>
-      内容可以很长，它会自然往下延伸。
-    </div>
+<p>很抱歉用这种方式给你写信QAQ，我的字实在是太丑了，很影响氛围......<br>
+于是我绞尽脑汁，就有了这个网站～</p>
+
+<p>不知不觉，两年都过去了，时间过得好快啊<br>
+年你有所不知，这一年变化好多呀，相较于去年，多了很多朋友呢^^</p>
+
+<p>虽然我们有时会很久都不发信息，但我总觉得我们的链接很深.....其实我每当想起有人在一个并不遥远的地方陪着我，心里就会高兴几分.....这种默默的存在，很特别</p>
+
+<p>今年的礼物想必你也发现了！是有天天的专辑(*¯︶¯*)哎呀想到这里我就开心，哈哈哈哈哈哈哈，我特别喜欢我送给你的礼物是怎么回事啊啊哈哈哈哈哈哈哈哈哈哈哈哈</p>
+
+<p>今年也有了个爱好呢，那就是看电影～说起爱好就想起了羽毛球，想起羽毛球就有些许伤感，因为根本没有人能和我打QAQ呜呜，很遗憾你去年送我的球我到现在都没碰....不过年送的礼物，珍藏一辈子也没有关系！（嘻嘻）</p>
+
+<p>有空再一起看电影呀～前段时间爱乐之城重映了，我们这里的地方影院就放了两天，本来晚上还有一场但是因为没票直接取消放映了，真的是太生气了，因为我当时忘记提前买票了....（你咋这么笨！）直接错过了</p>
+
+<p>哎呀我要是有自己的车该多好，可以随时随地想去找你就去找你（＾_-），很多时候都特别想见你找你玩，但是都没有机会，真是太气愤了！</p>
+
+<p>年你过得怎么样呢？相较于去年有更开心吗？至少不会挂科了对吧！在人生新的一年里，年也要加油哦！</p>
+
+<p>生日快乐～</p>
+
+<div class="signature">
+<p>天天</p>
+<p>2026/04/25</p>
+</div>
+
   </div>
 </div>
 
 <script>
-let opened = false;
-
-function openIt() {
-  if (!opened) {
-    document.getElementById("container").classList.add("open");
-    opened = true;
-  }
-}
+// 1秒后淡入
+setTimeout(() => {
+  const el = document.getElementById("content");
+  el.style.opacity = "1";
+  el.style.transform = "translateY(0)";
+}, 1000);
 </script>
 
 </body>
