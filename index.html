@@ -2,38 +2,34 @@
 <html lang="zh">
 <head>
 <meta charset="UTF-8">
-<title>打开看看</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>信</title>
 
 <style>
 body {
   margin: 0;
-  background: #ffffff; /* 背景白色 */
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  background: #ffffff;
   font-family: "Noto Serif SC", serif;
 }
 
-/* 容器 */
+/* 容器占满屏幕 */
 #container {
   position: relative;
-  width: 80vw;
-  max-width: 600px;
-  height: 320px;
+  width: 100vw;
+  height: 100vh;
   cursor: pointer;
 }
 
-/* 左右“门” */
+/* 门 */
 .panel {
   position: absolute;
   width: 50%;
   height: 100%;
-  background: #ffffff; /* 门也是白色 */
+  background: #ffffff;
   top: 0;
-  transition: transform 1.2s ease;
   z-index: 2;
+  transition: transform 1.2s ease;
 }
 
 .left {
@@ -55,29 +51,34 @@ body {
   transform: translateX(100%);
 }
 
-/* 中间内容（信纸） */
+/* 信纸（全屏） */
 #content {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #f5ecd9; /* 米色信纸 */
-  color: #222; /* 黑色文字 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 20px;
+  background: #f5ecd9; /* 米色 */
+  color: #222;
   opacity: 0;
   transition: opacity 1.5s ease;
-  padding: 30px;
+  
+  /* 关键：像真实信件的排版 */
+  padding: 40px 24px;
   box-sizing: border-box;
+  line-height: 1.8;
+  font-size: 18px;
 
-  /* 关键：让它像一张纸 */
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-/* 打开后文字出现 */
+/* 文字区域（限制宽度更像信） */
+#text {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* 打开后显示 */
 .open #content {
   opacity: 1;
 }
@@ -91,8 +92,12 @@ body {
   <div class="panel right"></div>
 
   <div id="content">
-    这是一张被打开的信纸。<br><br>
-    你看到的文字，原本是被隐藏的。
+    <div id="text">
+      这是一封铺满整个屏幕的信。<br><br>
+      你现在看到的，不是一个页面，<br>
+      而是被展开的一整张纸。<br><br>
+      内容可以很长，它会自然往下延伸。
+    </div>
   </div>
 </div>
 
